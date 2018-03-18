@@ -21,15 +21,15 @@ jobs:
       - checkout
 
       - restore_cache:
-        key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
 
       - run: npm install
 
       - save_cache:
-              key: dependency-cache-{{ checksum "package-lock.json" }}
-              paths:
-                - ./node_modules
-                - ./cordova/node_modules
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+            - ./cordova/node_modules
 
       # specify any bash command here prefixed with `run: `
       - run: ./node_modules/@angular/cli/bin/ng build --prod
@@ -52,7 +52,7 @@ jobs:
         - checkout
 
         - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+            key: dependency-cache-{{ checksum "package-lock.json" }}
 
         - run: npm install
 
