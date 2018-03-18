@@ -34,8 +34,8 @@ jobs:
       # build android app
       - run: cd cordova/
       - run: mkdir www
-      - run: npm install
       - run: sudo npm install -g yarn
       - run: yarn install cordova
+      - run: npm install
       - run: cordova platform add android
       - run: cordova build android
