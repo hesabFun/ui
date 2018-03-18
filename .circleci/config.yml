@@ -36,5 +36,5 @@ jobs:
       - run: mkdir www
       - run: sudo npm install -g cordova
       - run: npm install
-      - run: cordova platform add android
-      - run: cordova build android
+      - run: sudo cordova platform add android
+      - run: sudo cordova build android
