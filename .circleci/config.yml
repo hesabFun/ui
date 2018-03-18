@@ -36,5 +36,5 @@ jobs:
       - run: mkdir www
       - run: npm install cordova
       - run: npm install
-      - run: cordova platform add android
-      - run: cordova build android
+      - run: ./node_modules/cordova/bin/cordova platform add android
+      - run: ./node_modules/cordova/bin/cordova build android
