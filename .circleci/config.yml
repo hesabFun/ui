@@ -35,7 +35,7 @@ jobs:
       - run: cd cordova/
       - run: mkdir www
       - run: npm install
-      - run: export PATH=$(npm bin -g | rev):$PATH
+      - run: export PATH=/home/circleci/.npm-global/bin:$PATH
       - run: npm install -g cordova
       - run: cordova platform add android
       - run: cordova build android
