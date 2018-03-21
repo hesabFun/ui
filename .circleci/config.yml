@@ -17,8 +17,6 @@ jobs:
     ####   /go/src/github.com/circleci/go-tool
     ####   /go/src/bitbucket.org/circleci/go-tool
     working_directory: ~/angular-cli-circleci
-    environment:
-        PATH: /usr/lib/postgresql/9.6/bin/:$PATH
     steps:
       - checkout
 #      - restore_cache:
