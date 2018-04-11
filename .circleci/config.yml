@@ -40,5 +40,5 @@ jobs:
       - run: echo $PATH
       - run: ls /usr/local/lib/node_modules
       - run: ls /usr/local/bin
-      - run: cordova platform add android
-      - run: cordova build android
+      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/bin/cordova platform add android
+      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/bin/cordova build android
