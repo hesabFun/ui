@@ -32,10 +32,19 @@ jobs:
       - run: ./node_modules/@angular/cli/bin/ng build --prod
 
       # build android app
-      - run: cd cordova/
-      - run: mkdir www plugins platforms
-      - run: ls
-      - run: yarn global add cordova
-      - run: yarn
-      - run: cordova platform add android
-      - run: cordova build android
+#      - run: cd cordova/
+#      - run: mkdir www plugins platforms
+#      - run: ls
+#      - run: yarn global add cordova
+#      - run: yarn
+#      - run: cordova platform add android
+#      - run: cordova build android
+      - run:
+          name: build android
+          command:
+              cd cordova/ && \
+              mkdir www && \
+              yarn global add cordova && \
+              yarn && \
+              cordova platform add android && \
+              cordova build android
