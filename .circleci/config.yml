@@ -42,9 +42,9 @@ jobs:
       - run:
           name: build android
           command:
-              cd cordova/ && \
-              mkdir www && \
-              yarn global add cordova && \
-              yarn && \
-              cordova platform add android && \
+              cd cordova
+              mkdir www
+              yarn global add cordova
+              yarn
+              cordova platform add android
               cordova build android
