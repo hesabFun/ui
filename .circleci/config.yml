@@ -37,11 +37,8 @@ jobs:
       - run: npm install
       - run: npm install -g cordova --verbose
       - run: find /root -name "cordova"
-      - run: find /home -name "cordova"
-      - run: find /bin -name "cordova"
-      - run: find /sbin -name "cordova"
       - run: echo $PATH
       - run: ls /
       - run: ls /usr/local/bin
-      - run: cordova platform add android
-      - run: cordova build android
+      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/framework/src/org/apache/cordova platform add android
+      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/framework/src/org/apache/cordova build android
