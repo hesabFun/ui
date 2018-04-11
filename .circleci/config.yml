@@ -33,9 +33,9 @@ jobs:
 
       # build android app
       - run: cd cordova/
-      - run: mkdir www
-      - run: mkdir platforms
+      - run: mkdir www plugins platforms
+      - run: ls
       - run: yarn global add cordova
       - run: yarn
-      - run: cordova platform add android --verbose
+      - run: cordova platform add android
       - run: cordova build android
