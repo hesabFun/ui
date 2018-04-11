@@ -36,9 +36,9 @@ jobs:
       - run: mkdir www
       - run: npm install
       - run: npm install -g cordova --verbose
-      - run: find /usr -name "cordova"
+      - run: find /root -name "cordova"
       - run: echo $PATH
-      - run: ls /usr/local/lib/node_modules
+      - run: ls /
       - run: ls /usr/local/bin
-      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/bin/cordova platform add android
-      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/bin/cordova build android
+      - run: cordova platform add android
+      - run: cordova build android
