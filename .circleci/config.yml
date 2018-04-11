@@ -39,7 +39,6 @@ jobs:
           command: |
               cd cordova
               mkdir www
-#              yarn global add cordova
               npm install -g cordova
               npm install
               cordova platform add android
