@@ -41,7 +41,7 @@ jobs:
 #      - run: cordova build android
       - run:
           name: build android
-          command:
+          command: |
               cd cordova
               mkdir www
               yarn global add cordova
