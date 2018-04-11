@@ -35,7 +35,7 @@ jobs:
       - run: cd cordova/
       - run: mkdir www
       - run: npm install
-      - run: npm install -g cordova --verbose
+      - run: yarn install -g cordova --verbose
       - run: find /root -name "cordova"
       - run: echo $PATH
       - run: ls /
