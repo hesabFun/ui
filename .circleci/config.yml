@@ -6,7 +6,7 @@ jobs:
   build:
     docker:
       # specify the version
-      - image: node:latest
+      - image: erfun/gitlab-ci-android-26:latest
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -19,14 +19,14 @@ jobs:
     working_directory: ~/angular-cli-circleci
     steps:
       - checkout
-#      - restore_cache:
-#          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - run: npm install
-#      - save_cache:
-#          key: dependency-cache-{{ checksum "package-lock.json" }}
-#          paths:
-#            - ./node_modules
-#            - ./cordova/node_modules
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+            - ./cordova/node_modules
 
       # build web app
       - run: ./node_modules/@angular/cli/bin/ng build --prod
@@ -34,11 +34,7 @@ jobs:
       # build android app
       - run: cd cordova/
       - run: mkdir www
-      - run: npm install
+      - run: yarn
       - run: yarn global add cordova
-      - run: find /root -name "cordova"
-      - run: echo $PATH
-      - run: ls /
-      - run: ls /usr/local/bin
       - run: cordova platform add android
       - run: cordova build android
