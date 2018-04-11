@@ -37,6 +37,9 @@ jobs:
       - run: npm install
       - run: npm install -g cordova --verbose
       - run: find /root -name "cordova"
+      - run: find /home -name "cordova"
+      - run: find /bin -name "cordova"
+      - run: find /sbin -name "cordova"
       - run: echo $PATH
       - run: ls /
       - run: ls /usr/local/bin
