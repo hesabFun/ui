@@ -36,6 +36,7 @@ jobs:
       - run: mkdir www
       - run: npm install
       - run: npm install -g cordova --verbose
+      - run: find / -name "cordova"
       - run: echo $PATH
       - run: ls /usr/local/lib/node_modules
       - run: ls /usr/local/bin
