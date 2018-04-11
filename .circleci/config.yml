@@ -42,4 +42,4 @@ jobs:
               cordova platform add android
               cordova build android
               curl -s -F channels="ci" -F file=@"/root/angular-cli-circleci/cordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk" -F initial_comment="Aew App ${CIRCLE_PROJECT_USERNAME} ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_SHA1}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
-              curl -s -F chat_id="@hesabFun" -F document=@"/root/angular-cli-circleci/cordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk" -F caption="New App ${CIRCLE_PROJECT_USERNAME} ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_SHA1}" https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument
+              curl -s -F chat_id="@hesabFun" -F document=@"/root/angular-cli-circleci/cordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk" -F caption="New App ${CIRCLE_PROJECT_USERNAME} ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_SHA1}" "https://api.telegram.org/bot"${TELEGRAM_BOT_TOKEN}"/sendDocument"
