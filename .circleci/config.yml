@@ -35,10 +35,10 @@ jobs:
       - run: cd cordova/
       - run: mkdir www
       - run: npm install
-      - run: yarn install -g cordova --verbose
+      - run: yarn install --global cordova
       - run: find /root -name "cordova"
       - run: echo $PATH
       - run: ls /
       - run: ls /usr/local/bin
-      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/framework/src/org/apache/cordova platform add android
-      - run: /root/angular-cli-circleci/cordova/node_modules/cordova-android/framework/src/org/apache/cordova build android
+      - run: cordova platform add android
+      - run: cordova build android
