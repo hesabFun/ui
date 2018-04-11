@@ -36,5 +36,5 @@ jobs:
       - run: mkdir www
       - run: yarn global add cordova
       - run: yarn
-      - run: cordova platform add android
+      - run: cordova platform add android --verbose
       - run: cordova build android
