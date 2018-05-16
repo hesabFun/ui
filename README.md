@@ -1,4 +1,6 @@
-# HeasbFun - User interface
+![banner](https://user-images.githubusercontent.com/37318022/40126517-16dff78c-5960-11e8-8945-eedae6d990d3.png)
+
+# HesabFun - User interface
 
 Free, open source and cross-platform finance application
 
