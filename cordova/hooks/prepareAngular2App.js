@@ -5,7 +5,7 @@ module.exports = function (context) {
   const basePath = context.opts.projectRoot;
 
   console.log(execSync(
-    "./node_modules/@angular/cli/bin/ng build --target=production --environment=prod --output-path cordova/www/ --base-href ./ --aot",
+    "./node_modules/@angular/cli/bin/ng build --prod --build-optimizer --output-path cordova/www/ --base-href ./ --aot",
     {
       maxBuffer: 1024 * 1024,
       cwd: basePath + '/..'
