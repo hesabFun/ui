@@ -1,12 +1,9 @@
+import { throwError } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { AuthHttp } from 'angular2-jwt';
-
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 import { ProfileDataBackendInterface, TokenDataInterface } from "../../shared/services/interfaces";
 import { ConfigService, MessageService } from '../../shared/services/';
@@ -43,7 +40,7 @@ export class AuthService {
     return this.http
       .post(`${this.configService.getApiUrl()}v1/auth/login`, credentials)
       .map((res) => res.json())
-      .catch((error: any) => Observable.throw(error.json() || 'Invalid credentials'))
+      .catch((error: any) => throwError(error.json() || 'Invalid credentials'))
       ;
   }
 
@@ -72,7 +69,7 @@ export class AuthService {
       .catch((error: any) => {
         this.logout();
 
-        return Observable.throw(error.json().message || 'Invalid credentials');
+        return throwError(error.json().message || 'Invalid credentials');
       })
       ;
   }

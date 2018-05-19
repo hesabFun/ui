@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ng2-webstorage';
 import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import { ProfileDataJwtInterface, TokenDataInterface } from './interfaces/';
 

@@ -3,9 +3,9 @@ import { Http, Response } from '@angular/http';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from 'ng2-webstorage';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Rx';
+
+
 
 import { ConfigService } from '../../services';
 import { TranslationCacheService } from './translation-cache.service';

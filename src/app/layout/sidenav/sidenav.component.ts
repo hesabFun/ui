@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
-import { SidenavService } from './slidenav.service';
+// import { NavigationStart, Router } from '@angular/router';
+// import { SidenavService } from './slidenav.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,8 +9,10 @@ import { SidenavService } from './slidenav.service';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(private router: Router,
-              private sidenavService: SidenavService) {
+  constructor(
+    //           private router: Router,
+    //           private sidenavService: SidenavService
+  ) {
   }
 
   menu = [
@@ -19,12 +21,12 @@ export class SidenavComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.router.events
-      .subscribe(event => {
-        if (event instanceof NavigationStart) {
-          this.sidenavService.close().then(() => {
-          });
-        }
-      });
+    // this.router.events
+    //   .subscribe(event => {
+    //     if (event instanceof NavigationStart) {
+    //       this.sidenavService.close().then(() => {
+    //       });
+    //     }
+    //   });
   }
 }

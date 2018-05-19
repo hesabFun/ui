@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from 'ng2-webstorage';
 import { SidenavService } from './layout/sidenav/slidenav.service';
 import { UsersService } from './shared/services/users.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { ProfileDataJwtInterface } from './shared/services/interfaces';
 
 @Component({

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Observer } from 'rxjs';
 
 import { UsersService } from "../../shared/services/users.service";
-import { Observer } from 'rxjs/Observer';
 
 /**
  * This class implements a guard for routes that require successful authentication.
