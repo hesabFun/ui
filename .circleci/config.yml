@@ -32,14 +32,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-android
+          key: dependency-cache-android{{ checksum "package-lock.json" }}
       - run:
           name: install packages
           command: npm install
-          paths:
-            - ./node_modules
-            - ./cordova/node_modules
-            - /root/.gradle
       - run:
           name: build android
           command: |
@@ -51,7 +47,11 @@ jobs:
               cordova build android
               curl -s -F channels="ci" -F file=@"/root/angular-cli-circleci/cordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk" -F initial_comment="Aew App ${CIRCLE_PROJECT_USERNAME} ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_SHA1}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
       - save_cache:
-          key: dependency-cache-android
+          key: dependency-cache-android{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+            - ./cordova/node_modules
+            - /root/.gradle
 
 # Check https://circleci.com/docs/2.0/workflows/ for more details
 workflows:
