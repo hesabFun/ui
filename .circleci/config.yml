@@ -1,9 +1,9 @@
 version: 2
 jobs:
-  build:
+  build_web:
     docker:
       # specify the version
-      - image: erfun/gitlab-ci-android-26:latest
+      - image: node:latest
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -13,19 +13,33 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-web{{ checksum "package-lock.json" }}
       - run:
           name: install packages
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-web{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: build web app
+          command: ./node_modules/@angular/cli/bin/ng build --prod
+  build_android:
+    docker:
+      - image: erfun/gitlab-ci-android-26:latest
+
+    working_directory: ~/angular-cli-circleci
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-android{{ checksum "package-lock.json" }}
+      - run:
+          name: install packages
+          command: npm install
           paths:
             - ./node_modules
             - ./cordova/node_modules
             - /root/.gradle
-      - run:
-          name: build web app
-          command: ./node_modules/@angular/cli/bin/ng build --prod
       - run:
           name: build android
           command: |
@@ -36,3 +50,16 @@ jobs:
               cordova platform add android
               cordova build android
               curl -s -F channels="ci" -F file=@"/root/angular-cli-circleci/cordova/platforms/android/app/build/outputs/apk/debug/app-debug.apk" -F initial_comment="Aew App ${CIRCLE_PROJECT_USERNAME} ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_SHA1}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
+      - save_cache:
+          key: dependency-cache-android{{ checksum "package-lock.json" }}
+
+# Check https://circleci.com/docs/2.0/workflows/ for more details
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_web
+      - build_android
+#      - deploy:
+#          requires:
+#            - build_web
