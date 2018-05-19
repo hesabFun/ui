@@ -31,8 +31,8 @@ jobs:
     working_directory: ~/angular-cli-circleci
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-android{{ checksum "package-lock.json" }}
+#      - restore_cache:
+#          key: dependency-cache-android{{ checksum "package-lock.json" }}
       - run:
           name: install packages
           command: npm install
