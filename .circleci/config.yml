@@ -52,6 +52,36 @@ jobs:
             - ./node_modules
             - ./cordova/node_modules
             - /root/.gradle
+  deploy:
+    docker:
+      - image: node:latest
+    working_directory: ~/angular-cli-circleci
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-web{{ checksum "package-lock.json" }}
+      - run:
+          name: install packages
+          command: npm install
+      - save_cache:
+          key: dependency-cache-web{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: build web app
+          command: ./node_modules/@angular/cli/bin/ng build --prod
+
+      # build and push Docker image
+      - setup_remote_docker
+      - run:
+          name: build and push Docker image
+          command: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -t hesabfun/ui:$TAG .
+            docker tag hesabfun/ui:$TAG hesabfun/ui:latest
+            docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+            docker push hesabfun/ui:$TAG
+            docker push hesabfun/ui:latest
 
 # Check https://circleci.com/docs/2.0/workflows/ for more details
 workflows:
@@ -60,6 +90,6 @@ workflows:
     jobs:
       - build_web
       - build_android
-#      - deploy:
-#          requires:
-#            - build_web
+      - deploy:
+          requires:
+            - build_web
