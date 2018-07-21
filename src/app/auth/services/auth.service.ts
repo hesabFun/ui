@@ -1,7 +1,7 @@
 import { throwError } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -65,7 +65,7 @@ export class AuthService {
   public profile(): Observable<ProfileDataBackendInterface> {
     return this.authHttp
       .get(`${this.configService.getApiUrl()}v1/auth/profile`)
-      .map((response: Response) => response.json())
+      .map((res) => res.json())
       .catch((error: any) => {
         this.logout();
 

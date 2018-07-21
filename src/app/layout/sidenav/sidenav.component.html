@@ -7,9 +7,9 @@
     </mat-card-header>
   </mat-card>
   <mat-list-item *ngFor="let item of menu">
-    <button mat-menu-item routerLink="{{item.link}}">
+    <button mat-menu-item routerLink="{{item.path}}">
       <mat-icon>dialpad</mat-icon>
-      <span>{{item.name}}</span>
+      <span>{{item.alias}}</span>
     </button>
   </mat-list-item>
 </div>
