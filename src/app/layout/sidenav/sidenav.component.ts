@@ -37,6 +37,11 @@ export class SidenavComponent implements OnInit {
 
   }
 
+  menu = [
+    {alias: 'صفحه یک', path: 'page1'},
+    {alias: 'صفحه دو', path: 'page2'},
+  ];
+
   ngAfterContentInit() {
     let menu: Observable<MenuDataInterface[]>;
 
