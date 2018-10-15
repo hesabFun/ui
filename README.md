@@ -1,4 +1,4 @@
-![banner](https://user-images.githubusercontent.com/37318022/40126517-16dff78c-5960-11e8-8945-eedae6d990d3.png)
+![banner](https://user-images.githubusercontent.com/40510200/46984462-ff270380-d117-11e8-9edb-95d5b7d75ff8.png)
 
 # HesabFun - User interface
 
