@@ -1,4 +1,7 @@
-# HesabFun UI
+![banner](.github/cover.png)
+
+
+# HesabFun - User interface
 
 The default [Sapper](https://github.com/sveltejs/sapper) template, available for Rollup and webpack.
 
