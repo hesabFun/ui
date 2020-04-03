@@ -13,7 +13,7 @@
 
 <!--<Nav {segment}/>-->
 
-<div class="{isLoading ? '' : 'hidden'} fixed top-0 bottom-0 right-0 left-0 w-full h-full">
+<div class="{isLoading ? '' : 'hidden'} fixed top-0 bottom-0 right-0 left-0 w-full h-full z-50">
 	<div class=" bg-greyish-brown w-full h-full opacity-75"></div>
 	<div class="fixed top-0 bottom-0 right-0 left-0 text-center">
 		<div class="flex items-center justify-center h-screen w-screen">
