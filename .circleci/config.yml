@@ -5,7 +5,7 @@ jobs:
       - image: node:lts
     working_directory: ~/app
     steps:
-      - checkout
+#      - checkout
       - restore_cache:
           key: dependency-cache-web{{ checksum "package-lock.json" }}
       - run:
@@ -24,7 +24,7 @@ jobs:
       - image: node:lts
     working_directory: ~/app
     steps:
-      - checkout
+#      - checkout
       - restore_cache:
           key: dependency-cache-deploy{{ checksum "package-lock.json" }}
       - run:
