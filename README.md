@@ -1,4 +1,4 @@
-# sapper-template
+# HesabFun UI
 
 The default [Sapper](https://github.com/sveltejs/sapper) template, available for Rollup and webpack.
 
@@ -30,6 +30,7 @@ However you get the code, you can install dependencies and run the project in de
 ```bash
 cd my-app
 npm install # or yarn
+npm run watch:tailwind
 npm run dev
 ```
 
