@@ -3,9 +3,9 @@ jobs:
   build_web:
     docker:
       - image: node:lts
-    working_directory: ~/app
+    working_directory: /app
     steps:
-#      - checkout
+      - checkout
       - restore_cache:
           key: dependency-cache-web{{ checksum "package-lock.json" }}
       - run:
@@ -22,9 +22,9 @@ jobs:
   deploy:
     docker:
       - image: node:lts
-    working_directory: ~/app
+    working_directory: /app
     steps:
-#      - checkout
+      - checkout
       - restore_cache:
           key: dependency-cache-deploy{{ checksum "package-lock.json" }}
       - run:
