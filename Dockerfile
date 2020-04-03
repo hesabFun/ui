@@ -1,5 +1,5 @@
 FROM nginx:alpine
 
-COPY dist/ui/. /usr/share/nginx/html
+COPY __sapper__/export/. /usr/share/nginx/html
 
-#USER 1001
+COPY nginx.conf /etc/nginx/sites-enabled/default.conf

@@ -1,77 +1,114 @@
-![banner](https://user-images.githubusercontent.com/40510200/46984462-ff270380-d117-11e8-9edb-95d5b7d75ff8.png)
+![banner](.github/cover.png)
 
 # HesabFun - User interface
 
-Free, open source and cross-platform finance application
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The default [Sapper](https://github.com/sveltejs/sapper) template, available for Rollup and webpack.
 
 
-# Installing Cordova
+## Getting started
 
-Have node, npm and cordova installed.
 
-```
-npm install -g cordova
+### Using `degit`
+
+[`degit`](https://github.com/Rich-Harris/degit) is a scaffolding tool that lets you create a directory from a branch in a repository. Use either the `rollup` or `webpack` branch in `sapper-template`:
+
+```bash
+# for Rollup
+npx degit "sveltejs/sapper-template#rollup" my-app
+# for webpack
+npx degit "sveltejs/sapper-template#webpack" my-app
 ```
 
-Then, run:
 
-```
-npm install
-```
-inside both `ui` and `cordova` folders.
+### Using GitHub templates
 
-And then, run:
+Alternatively, you can use GitHub's template feature with the [sapper-template-rollup](https://github.com/sveltejs/sapper-template-rollup) or [sapper-template-webpack](https://github.com/sveltejs/sapper-template-webpack) repositories.
 
-```
-cordova platform add android
-```
-for android, and: 
-```
-cordova platform add ios
-```
-for ios. of course for ios, you might need some environmental specifications.
 
-After that, make sure you have all the cordova necessities by running these commands inside `cordova` folder:
+### Running the project
 
-```
-cordova platform ls
-```
-and: 
-```
-cordova requirements
+However you get the code, you can install dependencies and run the project in development mode with:
+
+```bash
+cd my-app
+npm install # or yarn
+npm run watch:tailwind
+npm run dev
 ```
 
-## Building the Mobile App
-  
-Inside the cordova folder, run:
-  
+Open up [localhost:3000](http://localhost:3000) and start clicking around.
+
+Consult [sapper.svelte.dev](https://sapper.svelte.dev) for help getting started.
+
+
+## Structure
+
+Sapper expects to find two directories in the root of your project —  `src` and `static`.
+
+
+### src
+
+The [src](src) directory contains the entry points for your app — `client.js`, `server.js` and (optionally) a `service-worker.js` — along with a `template.html` file and a `routes` directory.
+
+
+#### src/routes
+
+This is the heart of your Sapper app. There are two kinds of routes — *pages*, and *server routes*.
+
+**Pages** are Svelte components written in `.svelte` files. When a user first visits the application, they will be served a server-rendered version of the route in question, plus some JavaScript that 'hydrates' the page and initialises a client-side router. From that point forward, navigating to other pages is handled entirely on the client for a fast, app-like feel. (Sapper will preload and cache the code for these subsequent pages, so that navigation is instantaneous.)
+
+**Server routes** are modules written in `.js` files, that export functions corresponding to HTTP methods. Each function receives Express `request` and `response` objects as arguments, plus a `next` function. This is useful for creating a JSON API, for example.
+
+There are three simple rules for naming the files that define your routes:
+
+* A file called `src/routes/about.svelte` corresponds to the `/about` route. A file called `src/routes/blog/[slug].svelte` corresponds to the `/blog/:slug` route, in which case `params.slug` is available to the route
+* The file `src/routes/index.svelte` (or `src/routes/index.js`) corresponds to the root of your app. `src/routes/about/index.svelte` is treated the same as `src/routes/about.svelte`.
+* Files and directories with a leading underscore do *not* create routes. This allows you to colocate helper modules and components with the routes that depend on them — for example you could have a file called `src/routes/_helpers/datetime.js` and it would *not* create a `/_helpers/datetime` route
+
+
+### static
+
+The [static](static) directory contains any static assets that should be available. These are served using [sirv](https://github.com/lukeed/sirv).
+
+In your [service-worker.js](src/service-worker.js) file, you can import these as `files` from the generated manifest...
+
+```js
+import { files } from '@sapper/service-worker';
 ```
-cordova build android
+
+...so that you can cache them (though you can choose not to, for example if you don't want to cache very large files).
+
+
+## Bundler config
+
+Sapper uses Rollup or webpack to provide code-splitting and dynamic imports, as well as compiling your Svelte components. With webpack, it also provides hot module reloading. As long as you don't do anything daft, you can edit the configuration files to add whatever plugins you'd like.
+
+
+## Production mode and deployment
+
+To start a production version of your app, run `npm run build && npm start`. This will disable live reloading, and activate the appropriate bundler plugins.
+
+You can deploy your application to any environment that supports Node 10 or above. As an example, to deploy to [ZEIT Now](https://zeit.co/now) when using `sapper export`, run these commands:
+
+```bash
+npm install -g now
+now
 ```
-or ios. and after command is done, cordova will show the result folder for the app. (for android it would be `/ui/platforms/android/build/outputs/apk/android-debug.apk`)
+
+If your app can't be exported to a static site, you can use the [now-sapper](https://github.com/thgh/now-sapper) builder. You can find instructions on how to do so in its [README](https://github.com/thgh/now-sapper#basic-usage).
+
+
+## Using external components
+
+When using Svelte components installed from npm, such as [@sveltejs/svelte-virtual-list](https://github.com/sveltejs/svelte-virtual-list), Svelte needs the original component source (rather than any precompiled JavaScript that ships with the component). This allows the component to be rendered server-side, and also keeps your client-side app smaller.
+
+Because of that, it's essential that the bundler doesn't treat the package as an *external dependency*. You can either modify the `external` option under `server` in [rollup.config.js](rollup.config.js) or the `externals` option in [webpack.config.js](webpack.config.js), or simply install the package to `devDependencies` rather than `dependencies`, which will cause it to get bundled (and therefore compiled) with your app:
+
+```bash
+npm install -D @sveltejs/svelte-virtual-list
+```
+
+
+## Bugs and feedback
+
+Sapper is in early development, and may have the odd rough edge here and there. Please be vocal over on the [Sapper issue tracker](https://github.com/sveltejs/sapper/issues).
