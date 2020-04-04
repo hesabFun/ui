@@ -15,7 +15,7 @@
                 </form>
                 <hr class="mt-8 w-64">
                 <p class="w-64 -mt-3 mb-4 text-center"><span class="bg-white p-2">OR</span></p>
-                <a href="../" class="mt-4 bg-white border border-greyish w-64 p-3 self-center text-1xl tracking-tight font-bold relative flex flex"><img class="justify-center w-6 mr-4 ml-3" src="images/icons/btn_google_icon.svg" alt="hesabfun logo">Sign up with Google</a>
+                <a href="../" class="mt-4 bg-white border border-greyish w-64 p-3 self-center text-1xl tracking-tight font-bold relative flex"><img class="justify-center w-6 mr-4 ml-3" src="images/icons/btn_google_icon.svg" alt="hesabfun logo">Sign up with Google</a>
                 <p class="mt-3 w-64 text-sm tracking-tight font-bold text-greyish">By signing up, you agree to our <a href="../" class="font-bold text-greyish-brown hover:text-butterscotch">communications and usage terms</a></p>
                 <p class="mt-3 w-64 text-sm tracking-tight font-bold text-greyish">Already have an account? <a href="/signin" class="font-bold text-greyish-brown hover:text-butterscotch">Sign in</a></p>
             </div>
