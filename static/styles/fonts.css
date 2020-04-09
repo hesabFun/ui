@@ -1,24 +1,28 @@
 @font-face {
     font-family: 'maisonneue';
-    src: url('fonts/MaisonNeue-Medium.woff2') format('woff2');
+    src: local('tahoma'), local('serif'), url('fonts/MaisonNeue-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'maisonneue';
-    src: url('fonts/MaisonNeue-Bold.woff2') format('woff2');
+    src: local('tahoma'), local('serif'), url('fonts/MaisonNeue-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'maisonneue';
-    src: url('fonts/MaisonNeue-BoldItalic.woff2') format('woff2');
+    src: local('tahoma'), local('serif'), url('fonts/MaisonNeue-BoldItalic.woff2') format('woff2');
     font-weight: bold;
     font-style: italic;
+    font-display: swap;
 }
 @font-face {
     font-family: 'avenir';
-    src: url('fonts/Avenir-Regular.woff2') format('woff2');
+    src: local('tahoma'), local('serif'), url('fonts/Avenir-Regular.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
