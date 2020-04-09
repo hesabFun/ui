@@ -1,0 +1,3 @@
+.text-box {
+    @apply p-3 bg-white-text border border-greyish font-medium w-64
+}

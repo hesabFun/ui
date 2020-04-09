@@ -1,0 +1,11 @@
+.btn {
+    @apply bg-butterscotch w-64 p-3 self-center text-center tracking-tight;
+}
+
+.btn-white {
+    @apply bg-white w-64 p-3 self-center text-center tracking-tight border border-greyish relative flex;
+}
+
+.btn-icon {
+    @apply w-6 mr-4 ml-3 inline;
+}
