@@ -2,7 +2,7 @@ const tailwindcss = require("tailwindcss");
 
 // only needed if you want to purge
 const purgeCss = require("@fullhuman/postcss-purgecss")({
-    content: ["./src/**/*.svelte", "./src/**/*.html", "./static/styles/*", "./static/styles/*/*"],
+    content: ["./src/**/*.svelte", "./src/**/*.html"],
     defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
 });
 
