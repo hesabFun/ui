@@ -1,5 +1,5 @@
 .btn {
-    @apply bg-butterscotch w-64 p-3 self-center text-center tracking-tight;
+    @apply bg-butterscotch font-maisonneue w-64 p-3 self-center text-center tracking-tight;
 }
 
 .btn-white {
