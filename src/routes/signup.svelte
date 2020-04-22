@@ -1,11 +1,20 @@
 <script context="module">
     import {goto} from '@sapper/app';
+    import { jwt } from '../components/stores.js';
 
     let user = {
         display_name: null,
         email: null,
         password: null,
     };
+
+    let message;
+
+    const unsubscribe = jwt.subscribe(value => {
+        message = value;
+    });
+
+    // alert(message);
 
     async function handleRegister() {
         // const data = await fetch(`${process.env.API_URL}/v1/user/register`)
@@ -23,10 +32,12 @@
         const data = await res.json();
 
         if (res.status === 200) {
-            // await goto('../');
-            alert(data.message);
+            jwt.set(data.token);
+            // save jwt
+            await goto('../');
         } else {
-            alert(data.message);
+            jwt.set(data.message);
+            alert(message);
             // await goto('../');
             console.log(data.message, res.status)
         }
