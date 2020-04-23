@@ -2,7 +2,6 @@
     import {afterUpdate} from 'svelte';
     // import Nav from '../components/Nav.svelte';
 
-    // export let segment;
     let isLoading = true;
 
     afterUpdate(() => {
