@@ -17,7 +17,7 @@ jobs:
             - ./node_modules
       - run:
           name: build web app
-          command: npm run export
+          command: npm run build
 
   deploy:
     docker:
@@ -36,7 +36,7 @@ jobs:
             - ./node_modules
       - run:
           name: build web app
-          command: npm run export
+          command: npm run build
 
       # build and push Docker image
       - setup_remote_docker
