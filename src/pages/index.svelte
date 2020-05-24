@@ -8,8 +8,8 @@
 			<img class="justify-center mt-12" src="hesabfun-logo.svg" alt="hesabfun logo">
 			<p class="font-bold text-center text-6xl text-greyish-brown mt-2">Hesabfun</p>
 			<p class="font-mono text-center tracking-tight font-book text-greyish -mt-3">open source financial platform</p>
-			<a href="signup" class="mt-12 bg-butterscotch w-64 p-4 self-center text-1xl text-center tracking-tight">Create your free account</a>
-			<a href="../" class="mt-4 bg-white border border-greyish w-64 p-3 self-center text-1xl tracking-tight font-bold relative flex flex"><img class="justify-center w-6 mr-4 ml-3" src="images/icons/btn_google_icon.svg" alt="hesabfun logo">Sign up with Google</a>
+			<a href="signup" class="mt-12 btn">Create your free account</a>
+			<a href="../" class="mt-4 btn-white"><img class="btn-icon" src="images/icons/btn_google_icon.svg" alt="hesabfun logo">Sign up with Google</a>
 			<p class="mt-6 tracking-tight font-bold text-greyish text-center">Already have an account? <a class="hover:text-butterscotch" href="signin">Sign in</a></p>
 		</div>
 		<div class="self-end mb-4 flex justify-center text-greyish tracking-tight font-bold text-brown-grey">
