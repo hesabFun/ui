@@ -9,6 +9,7 @@
     "build:tailwind": "NODE_ENV=production postcss tailwindcss/tailwind.css -o public/index.css"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.2.0",
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@sveltech/routify": "^1.1.1-1",
@@ -23,7 +24,6 @@
     "tailwindcss": "^1.4.6"
   },
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^2.2.0",
     "sirv-cli": "^0.4.4"
   }
 }
