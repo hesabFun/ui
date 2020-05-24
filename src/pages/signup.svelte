@@ -10,9 +10,9 @@
 
     let message;
 
-    const unsubscribe = jwt.subscribe(value => {
-        message = value;
-    });
+    // const unsubscribe = jwt.subscribe(value => {
+    //     message = value;
+    // });
 
     // alert(message);
 
@@ -32,7 +32,7 @@
         const data = await res.json();
 
         if (res.status === 200) {
-            // jwt.set(data.token);
+            jwt.set(data.token);
             // save jwt
             await goto('../');
         } else {

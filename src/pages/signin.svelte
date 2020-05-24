@@ -1,11 +1,12 @@
 <script context="module">
-    import {goto} from '@sveltech/routify';
+    // import {goto} from '@sveltech/routify';
     import { jwt } from './_store.js';
 
     let user = {
         email: null,
         password: null,
     };
+
 
     async function handleLogin() {
         // const data = await fetch(`${process.env.API_URL}/v1/user/register`)
@@ -25,10 +26,11 @@
         if (res.status === 200) {
             jwt.set(data.token);
             // save jwt
-            await goto('../');
+            // await goto('../');
         } else {
+            jwt.set(data);
             alert(data.message);
-            await goto('../');
+            // await goto('../');
             console.log(data.message, res.status)
         }
     }

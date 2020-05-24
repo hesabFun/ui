@@ -1,3 +1,3 @@
-import {writable} from 'svelte/store'
+import { writable } from './_localStorageStore';
 
-export const jwt = writable(false);
+export const jwt = writable('jwt', false);
