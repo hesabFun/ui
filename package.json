@@ -2,8 +2,8 @@
   "name": "hesabfun",
   "version": "1.0.0",
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "npm run build:tailwind && rollup -c",
+    "dev": "SUPPRESS_NO_CONFIG_WARNING=false rollup -c -w",
+    "build": "npm run build:tailwind && SUPPRESS_NO_CONFIG_WARNING=false rollup -c",
     "start": "sirv public --single",
     "watch:tailwind": "postcss tailwindcss/tailwind.css -o public/index.css -w",
     "build:tailwind": "NODE_ENV=production postcss tailwindcss/tailwind.css -o public/index.css"
