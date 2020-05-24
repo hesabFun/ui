@@ -1,55 +1,19 @@
-<script context="module">
-    import {goto} from '@sapper/app';
-    import { jwt } from '../components/stores.js';
-
-    let user = {
-        email: null,
-        password: null,
-    };
-
-    async function handleLogin() {
-        // const data = await fetch(`${process.env.API_URL}/v1/user/register`)
-        const res = await fetch(`https://api.hesab.fun/v1/user/login`, {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).catch(error => {
-                    console.log(error);
-                }
-        );
-
-        const data = await res.json();
-
-        if (res.status === 200) {
-            jwt.set(data.token);
-            // save jwt
-            await goto('../');
-        } else {
-            alert(data.message);
-            await goto('../');
-            console.log(data.message, res.status)
-        }
-    }
-</script>
-
 <div class="grid grid-flow-col grid-cols-1 grid-rows-2 lg:grid-cols-2 lg:grid-rows-1">
     <div class="w-full h-screen grid grid-rows-2">
         <div class="m-12">
             <a href="../" class="mt-4 p-4 bg-white-text font-light text-1xl text-center tracking-wide"><span class="">&#8592</span> Back to home</a>
             <h1 class="mt-8 text-2xl sm:text-4xl tracking-tight font-bold">Good afternoon!<br> Welcome back.</h1>
             <div class="max-w-6xl">
-                <div>
+                <form>
                     <label class="hidden" for="email">Email:</label><br>
-                    <input bind:value={user.email} class="text-box" type="text" id="email" name="email" placeholder="Email"><br>
+                    <input class="p-3 bg-white-text border border-greyish font-medium w-64" type="text" id="email" name="email" placeholder="Email"><br>
                     <label class="hidden" for="password">Password:</label><br>
-                    <input bind:value={user.password} class="text-box" type="password" id="password" name="password" placeholder="Password"><br>
-                    <button class="mt-5 btn cursor-pointer" on:click={handleLogin}>Sign in</button>
-                </div>
+                    <input class="p-3 bg-white-text border border-greyish font-medium w-64" type="password" id="password" name="password" placeholder="Password"><br>
+                    <input class="mt-5 p-3 bg-butterscotch text-1xl tracking-tight w-64 cursor-pointer" type="submit" value="Sign in">
+                </form>
                 <hr class="mt-8 w-64">
                 <p class="w-64 -mt-3 mb-4 text-center"><span class="bg-white p-2">OR</span></p>
-                <a href="../" class="mt-4 btn-white"><img class="btn-icon" src="images/icons/btn_google_icon.svg" alt="hesabfun logo">Sign up with Google</a>
+                <a href="../" class="mt-4 bg-white border border-greyish w-64 p-3 self-center text-1xl tracking-tight font-bold relative flex flex"><img class="justify-center w-6 mr-4 ml-3" src="images/icons/btn_google_icon.svg" alt="hesabfun logo">Sign up with Google</a>
                 <p class="mt-3 w-64 text-sm tracking-tight font-bold text-greyish">Forgot your password? <a href="forgot-password" class="font-bold text-greyish-brown hover:text-butterscotch">Set new password</a></p>
                 <p class="mt-3 w-64 text-sm tracking-tight font-bold text-greyish">Don't have an account? <a href="/signup" class="font-bold text-greyish-brown hover:text-butterscotch">Sign up</a></p>
             </div>

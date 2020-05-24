@@ -1,4 +1,12 @@
 module.exports = {
+    purge: {
+        enabled: process.env.NODE_ENV === "production",
+        content: [
+            "./src/**/*.svelte",
+            "./src/**/*.html",
+        ],
+        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+    },
     theme: {
         extend: {
             colors: {
