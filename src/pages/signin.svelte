@@ -1,6 +1,5 @@
 <script context="module">
     // import {goto} from '@sveltech/routify';
-    import { jwt } from './_store.js';
 
     let user = {
         email: null,

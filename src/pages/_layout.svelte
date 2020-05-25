@@ -1,5 +1,7 @@
 <script>
     import {afterUpdate} from 'svelte';
+    import {jwt} from './_components/_store';
+    import {route} from '@sveltech/routify';
     // import Nav from '../components/Nav.svelte';
 
     let isLoading = true;
@@ -7,6 +9,20 @@
     afterUpdate(() => {
         isLoading = false;
     });
+
+    /// auth middleware
+    let nonAuthPages = ['', 'signin', 'signup'];
+
+    $: if (nonAuthPages.includes($route.leftover)) {
+        if ($jwt) {
+            // todo: redirect to dashboard
+        }
+    } else {
+        if (!$jwt) {
+            // todo: redirect to login page
+        }
+    }
+
 </script>
 
 
