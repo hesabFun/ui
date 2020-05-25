@@ -29,7 +29,7 @@ function writable(key, initialValue) {
         },
         // punt subscriptions to underlying store
         subscribe,
-        authenticator() {
+        isLogin() {
             const value = JSON.parse(localStorage.getItem(key));
             return typeof value.token != 'undefined'
         },

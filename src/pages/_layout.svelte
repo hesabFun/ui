@@ -14,12 +14,12 @@
     let nonAuthPages = ['', 'signin', 'signup'];
 
     $: if (nonAuthPages.includes($route.leftover)) {
-        if (jwt.authenticator()) {
+        if (jwt.isLogin()) {
             // todo: redirect to dashboard
             // $goto('/forget-password')
         }
     } else {
-        if (!jwt.authenticator()) {
+        if (!jwt.isLogin()) {
             // save url to localstorage and redirect user after login to this url
             localStorage.setItem('redirect-after-login', $route.leftover)
             // redirect to login page
