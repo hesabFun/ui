@@ -1,7 +1,7 @@
 <script>
     import {afterUpdate} from 'svelte';
     import {jwt} from './_components/_store';
-    import {route} from '@sveltech/routify';
+    import {route, goto} from '@sveltech/routify';
     // import Nav from '../components/Nav.svelte';
 
     let isLoading = true;
@@ -14,12 +14,16 @@
     let nonAuthPages = ['', 'signin', 'signup'];
 
     $: if (nonAuthPages.includes($route.leftover)) {
-        if ($jwt) {
+        if (jwt.authenticator()) {
             // todo: redirect to dashboard
+            // $goto('/forget-password')
         }
     } else {
-        if (!$jwt) {
-            // todo: redirect to login page
+        if (!jwt.authenticator()) {
+            // save url to localstorage and redirect user after login to this url
+            localStorage.setItem('redirect-after-login', $route.leftover)
+            // redirect to login page
+            $goto('/signin')
         }
     }
 
