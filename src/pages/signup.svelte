@@ -1,4 +1,4 @@
-<script context="module">
+<script>
     import {goto} from '@sveltech/routify';
 
     let user = {

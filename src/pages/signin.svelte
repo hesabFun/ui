@@ -1,5 +1,5 @@
-<script context="module">
-    import {goto} from '@sveltech/routify';
+<script>
+    import { goto } from '@sveltech/routify'
     import {jwt} from './_components/_store';
 
     let user = {
@@ -26,7 +26,7 @@
 
         if (res.status === 200) {
             jwt.set(data.token);
-            $goto('/select-account-type');
+            $goto('select-account-type');
         } else {
             alert(data.message);
         }
