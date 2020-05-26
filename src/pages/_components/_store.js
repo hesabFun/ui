@@ -31,6 +31,8 @@ function writable(key, initialValue) {
         subscribe,
         isLogin() {
             const value = JSON.parse(localStorage.getItem(key));
+            if (value == null)
+                return false;
             return typeof value.token != 'undefined'
         },
         logout() {
