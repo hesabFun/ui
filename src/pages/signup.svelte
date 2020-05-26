@@ -7,14 +7,6 @@
         password: null,
     };
 
-    let message;
-
-    // const unsubscribe = jwt.subscribe(value => {
-    //     message = value;
-    // });
-
-    // alert(message);
-
     async function handleRegister() {
         // const data = await fetch(`${process.env.API_URL}/v1/user/register`)
         const res = await fetch(`https://api.hesab.fun/v1/user/register`, {
@@ -25,6 +17,7 @@
             }
         }).catch(error => {
                     console.log(error);
+                    alert('failed');
                 }
         );
 
@@ -32,13 +25,9 @@
 
         if (res.status === 200) {
             jwt.set(data.token);
-            // save jwt
-            await goto('../');
+            await goto('/select-account-type');
         } else {
-            // jwt.set(data.message);
             alert(message);
-            // await goto('../');
-            console.log(data.message, res.status)
         }
     }
 </script>

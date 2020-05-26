@@ -21,7 +21,7 @@
     } else {
         if (!jwt.isLogin()) {
             // save url to localstorage and redirect user after login to this url
-            localStorage.setItem('redirect-after-login', $route.leftover)
+            localStorage.setItem('redirect-after-login', $route.leftover);
             // redirect to login page
             $goto('/signin')
         }

@@ -1,12 +1,14 @@
+const purgeCss = {
+    enabled: true,
+    content: [
+        "./src/**/*.svelte",
+        "./src/**/*.html",
+    ],
+    defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+};
+
 module.exports = {
-    purge: {
-        enabled: process.env.NODE_ENV === "production",
-        content: [
-            "./src/**/*.svelte",
-            "./src/**/*.html",
-        ],
-        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-    },
+    purge: process.env.NODE_ENV === "production" ? purgeCss : false,
     theme: {
         extend: {
             colors: {
