@@ -25,7 +25,7 @@
 
         if (res.status === 200) {
             jwt.set(data.token);
-            await goto('/select-account-type');
+            $goto('/select-account-type');
         } else {
             alert(message);
         }
