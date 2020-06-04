@@ -1,0 +1,28 @@
+{
+  "name": "HesabFun",
+  "short_name": "HesabFun",
+  "theme_color": "#ffbf44",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "hesabfun-logo-240.png",
+      "type": "image/png",
+      "sizes": "240x240",
+      "purpose": "any"
+    },
+    {
+      "src": "hesabfun-logo-171.svg",
+      "type": "image/svg",
+      "sizes": "171x171",
+      "purpose": "any"
+    },
+    {
+      "src": "hesabfun-logo-683.svg",
+      "type": "image/svg",
+      "sizes": "683x683",
+      "purpose": "any"
+    }
+  ]
+}
