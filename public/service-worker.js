@@ -2,6 +2,7 @@ let cacheName = 'hesabfun-pwa';
 let filesToCache = [
     '/',
     '/index.html',
+    '/index.css',
     '/build/bundle.css',
     '/build/main.js'
 ];
