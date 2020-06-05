@@ -37,6 +37,11 @@ jobs:
       - run:
           name: build web app
           command: npm run build
+      - run:
+          name: added version to resources
+          command: |
+            sed -i -e "s/index.css/index.css?v=${$CIRCLE_BUILD_NUM}/g" public/index.html
+            sed -i -e "s/main.js/main.js?v=${$CIRCLE_BUILD_NUM}/g" public/index.html
 
       # build and push Docker image
       - setup_remote_docker
