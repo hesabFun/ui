@@ -40,10 +40,8 @@ jobs:
       - run:
           name: versioning css, js
           command: |
-            SED_FILE="s/index.css/index.css?v="$CIRCLE_BUILD_NUM"/"
-            sed -i -e $SED_FILE public/index.html
-            SED_FILE="s/main.js/index.css?v="$CIRCLE_BUILD_NUM"/"
-            sed -i -e $SED_FILE public/index.html
+            sed -i 's/index.css/index.css?v='"$CIRCLE_BUILD_NUM"'/' public/index.html
+            sed -i 's/main.js/main.js?v='"$CIRCLE_BUILD_NUM"'/' public/index.html
 
       # build and push Docker image
       - setup_remote_docker
