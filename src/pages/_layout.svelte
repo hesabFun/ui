@@ -11,12 +11,12 @@
     });
 
     /// auth middleware
-    let nonAuthPages = ['', 'signin', 'signup'];
+    let nonAuthPages = ['/', '/signin', '/signup'];
 
-    $: if (nonAuthPages.includes($route.leftover)) {
+    $: if (nonAuthPages.includes($route.path)) {
         if (jwt.isLogin()) {
             // todo: redirect to dashboard
-            // $goto('/forget-password')
+            // $goto('/dashboard')
         }
     } else {
         if (!jwt.isLogin()) {
@@ -26,7 +26,6 @@
             $goto('/signin')
         }
     }
-
 </script>
 
 
