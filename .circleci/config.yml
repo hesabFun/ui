@@ -40,9 +40,10 @@ jobs:
       - run:
           name: versioning css, js
           command: |
-            set -o pipefail
-            sed -i -e "s/index.css/index.css?v=1/" public/index.html
-            sed -i -e "s/main.js/main.js?v=1/" public/index.html
+            SED_FILE="s/index.css/index.css?v="$CIRCLE_BUILD_NUM"/"
+            sed -i -e $SED_FILE public/index.html
+            SED_FILE="s/main.js/index.css?v="$CIRCLE_BUILD_NUM"/"
+            sed -i -e $SED_FILE public/index.html
 
       # build and push Docker image
       - setup_remote_docker
