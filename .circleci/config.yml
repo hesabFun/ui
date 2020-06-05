@@ -37,9 +37,12 @@ jobs:
       - run:
           name: build web app
           command: npm run build
-      - run: sed -i -e "s/index.css/index.css?v=${$CIRCLE_BUILD_NUM}/g" public/index.html
-      - run: sed -i -e "s/main.js/main.js?v=${$CIRCLE_BUILD_NUM}/g" public/index.html
-
+      - run:
+          name: version css
+          command: sed -i -e "s/index.css/index.css?v=${$CIRCLE_BUILD_NUM}/" public/index.html
+      - run:
+          name: version js
+          command: sed -i -e "s/main.js/main.js?v=${$CIRCLE_BUILD_NUM}/" public/index.html
 
       # build and push Docker image
       - setup_remote_docker
