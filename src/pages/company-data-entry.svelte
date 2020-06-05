@@ -12,7 +12,7 @@
             body: JSON.stringify(form),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + jwt.isLogin(),
+                'Authorization': 'Bearer ' + jwt.getToken(),
             }
         }).catch(error => {
                     console.log(error);
@@ -50,11 +50,11 @@
                 </div>
             </div>
             <div class="max-w-6xl">
-                <form>
+                <div>
                     <label class="hidden" for="name">Company name:</label><br>
                     <input bind:value={form.name} class="p-3 bg-white-text border border-greyish font-medium w-64" type="text" id="name" name="name" placeholder="Company name"><br>
-                    <input on:click={createCompany} class="mt-5 p-3 bg-butterscotch text-1xl tracking-tight w-64 cursor-pointer" type="submit" value="Save & Next Step">
-                </form>
+                    <button on:click={createCompany} class="mt-5 btn cursor-pointer">Save & Next Step</button>
+                </div>
             </div>
         </div>
     </div>

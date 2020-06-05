@@ -35,6 +35,12 @@ function writable(key, initialValue) {
                 return false;
             return typeof value.token != 'undefined'
         },
+        getToken() {
+            const value = JSON.parse(localStorage.getItem(key));
+            if (value == null)
+                return false;
+            return typeof value.token != 'undefined' ? value.token : false;
+        },
         logout() {
             this.set(false)
         },
