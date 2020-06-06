@@ -23,7 +23,7 @@
 
         if (res.status === 200) {
             console.log(data.token);
-            $goto('../');
+            $goto('select-workspace');
         } else {
             alert(data.message);
         }
