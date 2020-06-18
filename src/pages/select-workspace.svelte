@@ -1,3 +1,30 @@
+<script>
+    import {jwt} from './_components/_store';
+    import { onMount } from 'svelte';
+
+    let companies = [];
+
+    onMount(async () => {
+        const res = await fetch(`https://api.hesab.fun/v1/companies`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + jwt.getToken(),
+            }
+        }).catch(error => {
+                    console.log(error);
+                }
+        );
+
+        const data = await res.json();
+
+        if (res.status === 200) {
+            companies = data.companies;
+        } else {
+            alert(data.message);
+        }
+    });
+</script>
 <div class="grid grid-flow-col grid-cols-1 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1">
     <div class="w-full h-screen grid grid-rows-2 col-span-2">
         <div class="m-6">
@@ -10,17 +37,18 @@
             <h3 class="mt-2 leading-tight tracking-tight font-bold text-greyish">You're already members into these workspaces:</h3>
 
             <div class="mt-10 max-w-sm">
-                <a href="../" class="mt-3 flex w-full bg-white-text border border-greyish flex  items-center">
+                {#each companies as company}
+                <a href="company/{company.id}" class="mt-3 flex w-full bg-white-text border border-greyish flex  items-center">
                     <div class="w-16 h-16 bg-white flex justify-center items-center">
                         <svg class="w-16 p-2" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><g><path d="M0,0h24v24H0V0z" fill="none"/><path fill="#aaa6a2" d="M12,7V3H2v18h20V7H12z M6,19H4v-2h2V19z M6,15H4v-2h2V15z M6,11H4V9h2V11z M6,7H4V5h2V7z M10,19H8v-2h2V19z M10,15H8v-2h2 V15z M10,11H8V9h2V11z M10,7H8V5h2V7z M20,19h-8v-2h2v-2h-2v-2h2v-2h-2V9h8V19z M18,11h-2v2h2V11z M18,15h-2v2h2V15z"/></g></svg>
                     </div>
-                    <span class="ml-3 text-xl tracking-tight font-bold text-greyish w-full">hesabfun</span>
-
+                    <span class="ml-3 text-xl tracking-tight font-bold text-greyish w-full">{company.name}</span>
                     <div class="w-12 h-12 flex justify-center items-center">
                         <svg class="w-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="#aaa6a2" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
                     </div>
                 </a>
-                <div class="mt-3 flex w-full bg-white-text border border-greyish flex  items-center">
+
+                <!--<div class="mt-3 flex w-full bg-white-text border border-greyish flex  items-center">
                     <div class="w-16 h-16 bg-white flex justify-center items-center">
                         <svg class="w-16 p-2" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><g><path d="M0,0h24v24H0V0z" fill="none"/><path fill="#aaa6a2" d="M12,7V3H2v18h20V7H12z M6,19H4v-2h2V19z M6,15H4v-2h2V15z M6,11H4V9h2V11z M6,7H4V5h2V7z M10,19H8v-2h2V19z M10,15H8v-2h2 V15z M10,11H8V9h2V11z M10,7H8V5h2V7z M20,19h-8v-2h2v-2h-2v-2h2v-2h-2V9h8V19z M18,11h-2v2h2V11z M18,15h-2v2h2V15z"/></g></svg>
                     </div>
@@ -36,8 +64,18 @@
                         <span><svg class="w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="#aaa6a2" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg></span>
                         <span class="text-greyish">delete</span>
                     </a>
-                </div>
-
+                </div>-->
+                {:else}
+                    <a href="#" class="mt-3 flex w-full bg-white-text border border-greyish flex  items-center">
+                        <div class="w-16 h-16 bg-white flex justify-center items-center">
+                            <svg class="w-16 p-2" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><g><path d="M0,0h24v24H0V0z" fill="none"/><path fill="#aaa6a2" d="M12,7V3H2v18h20V7H12z M6,19H4v-2h2V19z M6,15H4v-2h2V15z M6,11H4V9h2V11z M6,7H4V5h2V7z M10,19H8v-2h2V19z M10,15H8v-2h2 V15z M10,11H8V9h2V11z M10,7H8V5h2V7z M20,19h-8v-2h2v-2h-2v-2h2v-2h-2V9h8V19z M18,11h-2v2h2V11z M18,15h-2v2h2V15z"/></g></svg>
+                        </div>
+                        <span class="ml-3 text-xl tracking-tight font-bold text-greyish w-full">Loading...</span>
+                        <div class="w-12 h-12 flex justify-center items-center">
+                            <svg class="w-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="#aaa6a2" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </div>
+                    </a>
+                {/each}
                 <hr class="mt-8 w-full -w-64">
                 <p class="w-full -w-64 -mt-3 mb-4 text-center"><span class="bg-white p-2">OR</span></p>
 

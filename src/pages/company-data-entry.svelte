@@ -22,7 +22,6 @@
         const data = await res.json();
 
         if (res.status === 200) {
-            console.log(data.token);
             $goto('select-workspace');
         } else {
             alert(data.message);
