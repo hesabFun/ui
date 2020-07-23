@@ -11,9 +11,7 @@
     });
 
     /// auth middleware
-    let nonAuthPages = ['', '/', '/signin', '/signup'];
-
-    console.log($route.path);
+    let nonAuthPages = ['', '/', '/index', '/signin', '/signup'];
 
     $: if (nonAuthPages.includes($route.path)) {
         if (jwt.isLogin()) {
