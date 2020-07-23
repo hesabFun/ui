@@ -9,21 +9,21 @@
     "build:tailwind": "NODE_ENV=production postcss tailwindcss/tailwind.css -o public/index.css"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.2.0",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
-    "@sveltech/routify": "^1.1.1-1",
+    "@sveltech/routify": "^1.9.4",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.1",
     "postcss-import": "^12.0.1",
     "rollup": "^1.20.0",
     "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-svelte": "^5.2.3",
     "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0",
-    "tailwindcss": "^1.4.6"
+    "svelte": "^3.24.0",
+    "tailwindcss": "^1.5.2"
   },
   "dependencies": {
-    "sirv-cli": "^0.4.4"
+    "sirv-cli": "^0.4.6"
   }
 }

@@ -13,6 +13,8 @@
     /// auth middleware
     let nonAuthPages = ['', '/', '/signin', '/signup'];
 
+    console.log($route.path);
+
     $: if (nonAuthPages.includes($route.path)) {
         if (jwt.isLogin()) {
             // todo: redirect to dashboard
