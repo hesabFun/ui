@@ -26,7 +26,7 @@
             jwt.set(data.token);
             $goto('/select-account-type');
         } else {
-            alert(message);
+            alert(data.message);
         }
     }
 </script>
