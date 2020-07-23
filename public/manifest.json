@@ -3,7 +3,7 @@
   "short_name": "HesabFun",
   "theme_color": "#ffbf44",
   "background_color": "#ffffff",
-  "display": "fullscreen",
+  "display": "standalone",
   "start_url": "/",
   "icons": [
     {
