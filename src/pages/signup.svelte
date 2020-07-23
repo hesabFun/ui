@@ -1,5 +1,6 @@
 <script>
     import {goto} from '@sveltech/routify';
+    import {jwt} from './_components/_store';
 
     let user = {
         display_name: null,
