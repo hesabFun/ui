@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  app:
+    working_dir: /app
+    image: node:lts
+    volumes:
+      - ./:/app
+    command: bash -c "npm install && npm run dev"
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+  css:
+    working_dir: /app
+    image: node:lts
+    volumes:
+      - ./:/app
+    command: bash -c "npm run watch:tailwind"
